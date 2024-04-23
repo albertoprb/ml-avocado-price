@@ -4,6 +4,7 @@ debugpy
 
 # Data Analysis & visualization
 pandas==2.2.1
+tabulate # Pretty print pandas
 numpy==1.26.4
 matplotlib==3.8
 seaborn==0.13.2

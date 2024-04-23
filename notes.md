@@ -1,14 +1,12 @@
 
 # EDA TODO:
 
-* Correlation table (price and regions, and volumes)
+* 
 
 # ML TODO:
 
 ### Planned
 * Encode avocado type
-* Remove unnecessary columns
-    * Total volume, Total bags
 * Scale of numeric data (all columns)
 * sklearn imputer for number headers (e.g. 4046)
 ---
