@@ -1,16 +1,7 @@
 
 # EDA TODO:
-* (Postpone) Plot different total volume of avocados (PLC and Bagged)
-* Time series clean
-    * Investigate Dec 2018
-    * Investigate duplicate dates
-    * Dec 2020 missing
-* Plot seasonality
-    * Plot the price vs volume
-    * Plot the price vs avocado season
+
 * Correlation table (price and regions, and volumes)
-* Investigate duplicate days (Hypothesis)
-* Create a data dictionary
 
 # ML TODO:
 
@@ -21,6 +12,10 @@
 * Scale of numeric data (all columns)
 * sklearn imputer for number headers (e.g. 4046)
 ---
+* Time series clean
+    * Investigate Dec 2018
+    * Investigate duplicate dates
+* Investigate duplicate days (Hypothesis)
 * Prepare the date column (test it out without the time as well?)
     * Year, Week (1-52, or rolling 1-360)
     * Year, Quarter
@@ -32,7 +27,7 @@
 * Organic vs conventional split --> Not lose much (maybe postpone it)
 * Slice by Region level? Total US vs. Regions 
 
-### Tomorrow
+### Steps
 
 * Decide on split then each person tries a new algo
     * Total US, non-time series
@@ -45,9 +40,6 @@ Challenges
 * National data granularity helpful or not?
 
 
-### Maybes
+### Future plans
 
-* PCA for dimension reduction 
-
-
-
+* Create a data dictionary
