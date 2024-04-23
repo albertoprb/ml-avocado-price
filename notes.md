@@ -21,7 +21,7 @@
     * Year, Quarter
     * Year, Season
 * 3 weeks of data missing in Dec 2018 --> Would it affect the ML algorithm
-* Time series split 
+* Time series split
 
 ### Things to consider
 * Organic vs conventional split --> Not lose much (maybe postpone it)
