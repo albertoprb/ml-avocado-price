@@ -1,1 +1,1 @@
-# ml-avocado-price
+# Avocado Price Predictor
