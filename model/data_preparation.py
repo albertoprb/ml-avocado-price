@@ -40,9 +40,12 @@ class DataPreparation:
         self.df = self.df.drop(columns=["date", "year"])
         return self
 
-    def keep_only(self, total_volume=True, volume_components=False):
+    def keep_only(self, total_volume=False, volume_components=False):
         if volume_components:
-            self.df = self.df.drop(columns=["total_volume"])
+            self.df = self.df.drop(columns=[
+                "total_volume",
+                "total_bags"
+                ])
         if total_volume:
             self.df = self.df.drop(columns=[
                 "4046", "4225", "4770",
@@ -85,7 +88,7 @@ class DataPreparation:
 data_processor = DataPreparation(df)
 slices = (
     data_processor
-    .keep_only(total_volume=True)
+    .keep_only(volume_components=True)
     .remove_date()
     .slice()
     # .convert_date(to_year_week=True)
@@ -114,3 +117,5 @@ for slice_name, slice in slices.items():
 #   |      |      |      |           |              |                                     |
 #   |      |      |      |           |              |                                     |
 #   |      |      |      |           |              |                                     |
+
+# Drop organic and run it again with total / with only components
