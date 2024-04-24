@@ -86,7 +86,55 @@ This change improves dramatically the test score for the Decision Tree, and only
 | Linear regression | 53.57%           | 54.60%       |
 +-------------------+------------------+--------------+
 
-Then we apply the polynomial features to capture the non-linear data behavior
+Then we apply the polynomial features to capture the non-linear data behavior. No significant difference for degrees 2, and 3.
+
+Conclusions
+
+* Using a sklearn pipeline makes changes much easier 
+* The Test score improved drammatically using the components of volume but the linear regression could be better. 
+* Polynomial features in this scenario did not help.
 
 
-# 3. Only total volume and only conventional avocados
+# 3. Removing total_volume and keeping all volume components, only keeping conventional or organic avocados
+
+For Conventional, the results were much worse
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 48.74%       |
+| Linear regression | 38.39%           | 38.11%       |
++-------------------+------------------+--------------+
+
+Similar for Organic
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 37.82%       |
+| Linear regression | 30.38%           | 29.77%       |
++-------------------+------------------+--------------+
+
+Conclusions
+
+* Slicing the data on avocado type did not yield better results.
+
+# 3. Keeping onlyy total_volume and keeping either conventional or organic avocados
+
+For Conventional, the results were much worse
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 14.43%       |
+| Linear regression | 37.08%           | 36.70%       |
++-------------------+------------------+--------------+
+
+And drammatically worse for Organic
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 1.00%        |
+| Linear regression | 29.44%           | 28.70%       |
++-------------------+------------------+--------------+
+
+Conclusions
+* Total volume alone is not a good estimator for average avocado price.
+
