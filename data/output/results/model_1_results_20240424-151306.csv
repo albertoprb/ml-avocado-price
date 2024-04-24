@@ -1,0 +1,3 @@
+,Training score,Test score
+Decision Tree,100.00%,62.64%
+Linear regression,54.92%,51.82%
