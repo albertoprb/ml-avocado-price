@@ -1,0 +1,2 @@
+,Training score,Test score,Description
+Decision tree,100.00%,41.33%,Decision tree with Ordinal Encoder
