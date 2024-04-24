@@ -5,16 +5,20 @@ from tabulate import tabulate
 
 np.set_printoptions(precision=2, suppress=True)
 
+print("Reading CSV input")
 
 input_path = os.path.join(os.path.dirname(__file__), "../data/")
-output_path = os.path.join(os.path.dirname(__file__), "../data/output/")
+output_path = os.path.join(os.path.dirname(__file__), "../data/slices/")
 
-print("Reading CSV input")
 df = pd.read_csv(
     os.path.normpath(input_path + "avocado.csv")
 )
-geographies = pd.read_csv(
-    os.path.normpath(input_path + "geographies_processed.csv")
+
+input_path_location = os.path.join(
+    os.path.dirname(__file__), "../data/locations/"
+)
+expanded_locations = pd.read_csv(
+    os.path.normpath(input_path_location + "expanded.csv")
 )
 
 
@@ -70,10 +74,14 @@ class DataPreparation:
 
     def slice_by_avocado_type(self):
         df_organic = self.df[self.df["type"] == "organic"]
+        df_organic = df_organic.drop(columns=["type"])
+
         df_conventional = self.df[self.df["type"] == "conventional"]
+        df_conventional = df_conventional.drop(columns=["type"])
+
         return {"organic": df_organic, "conventional": df_conventional}
 
-    def slice(self, by_location_level=False, by_avocado_type=False):
+    def slice(self, by_avocado_type=False, by_location_level=False):
         slices = {}
         if by_avocado_type:
             slices.update(self.slice_by_avocado_type())
@@ -81,18 +89,18 @@ class DataPreparation:
                 return Exception("Not implemented")
                 # return self.slice_by_region_level()
         if not by_avocado_type and not by_location_level:
-            slices.update({"avocados": self.df})
+            slices.update({"avocado": self.df})
         return slices
 
 
 data_processor = DataPreparation(df)
 slices = (
     data_processor
-    .keep_only(volume_components=True)
+    .keep_only(total_volume=True)
     .remove_date()
-    .slice()
+    .slice(by_avocado_type=True)
     # .convert_date(to_year_week=True)
-    # .add_location_details(geographies)
+    # .add_location_details(expanded_locations)
     # .slice(by_avocado_type=True)
 )
 
@@ -103,19 +111,3 @@ for slice_name, slice in slices.items():
         index=False
     )
     print(tabulate(slice.sample(5), headers='keys', tablefmt='psql'))
-
-# Features for every run
-#   | Date | Year | Type | Geography | Total volume | Volume Components (PLUs, Bag S/M/L) |
-#   |------|------|------|-----------|--------------|-------------------------------------|
-# 1 | No   |  No  | Yes  |    Yes    |     Yes      |        No                           |
-# 2 | No   |  No  | Con  |    Yes    |     Yes      |        No                           |
-# 3 | Yes  |  ?   | All  |    Region |     Yes      |        No                           |
-# 4 | Year, Month | All  |    Region |     Yes      |        No                           |
-# 5 | Year, Qarter|      |           |              |                                     |
-#   |      |      |      |           |              |                                     |
-#   |      |      |      |           |              |                                     |
-#   |      |      |      |           |              |                                     |
-#   |      |      |      |           |              |                                     |
-#   |      |      |      |           |              |                                     |
-
-# Drop organic and run it again with total / with only components
