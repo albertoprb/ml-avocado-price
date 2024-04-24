@@ -1,0 +1,3 @@
+,Training score,Test score,Description
+Decision tree,1.0,0.41526497594932976,Decision tree with Ordinal Encoder
+Linear Regression,0.40257629530772365,0.3911535748362006,Linear regression without scaling and poly

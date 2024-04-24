@@ -33,6 +33,26 @@
     * Regions, with time series
 * Repeat for further slices
 
+
+
+Target: price
+
+Features for every run
+| Date | Year | Type | Geography | Total volume | Volume Components (PLUs, Bag S/M/L) |
+|------|------|------|-----------|--------------|-------------------------------------|
+| No   |  No  | Yes  |    Yes    |     Yes      |        No                           |
+| No   |  No  | Con  |    Yes    |     Yes      |        No                           |
+| Yes  |  ?   | All  |    Region |     Yes      |        No                           |
+| Year, Month | All  |    Region |     Yes      |        No                           |
+| Year, Qarter|      |           |              |                                     |
+|      |      |      |           |              |                                     |
+|      |      |      |           |              |                                     |
+|      |      |      |           |              |                                     |
+|      |      |      |           |              |                                     |
+|      |      |      |           |              |                                     |
+
+
+
 Challenges
 * Bags split would help or not? 
 * National data granularity helpful or not?
