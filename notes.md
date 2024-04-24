@@ -57,7 +57,34 @@ Challenges
 * Bags split would help or not? 
 * National data granularity helpful or not?
 
+## TODOs
 
-### Future plans
+* Clean-up the project and organize it
+* Redo the steps and document results
+* Cross-validation
+* Optimize Decision Tree + Random forest
+* Optimize Linear Regression
+* Break down into 2 avocado types
+* Move to expanded dataset
+* PCA on components of volume
 
-* Create a data dictionary
+--- 81
+DONE fit auf der Trainingsmenge 
+DONE score auf der Testmenge 
+DONE Datenbeschreibung kurzer Bericht
+--- 10
+TODO Datenbeschreibung ausführlich trainscore cvscore verschiedene 
+? Parameter im Algorithmus mit Score testscore   
+DONE ausführlicher Bericht( aber nicht labern!)
+--- 5,5
+Score-Festlegung
+Auswahl der Algorithmen und Parameter
+Auswertung der Leistungen
+Ideen für individuelle Verfeinerungen
+Gesamtbeurteilung
+--- 3,5
+Gridsearch 
+PCA 
+DONE Pipeline 
+Klassen, die im Unterricht nicht behandelt wurden mit Erklärung wie sie arbeiten 
+eigene Klassen
