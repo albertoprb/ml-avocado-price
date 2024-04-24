@@ -66,7 +66,7 @@ Conclusions
 # 2. Removing total_volume and keeping all volume components
 
 In this scenario we 
-* Moved to use sklearn pipelines 
+* Moved to use sklearn pipelines. Replicated the results to make sure.
 * Kept all components of volume. 
 
 The hypothesis is that for the same total volume, if certain components have higher representation, they will affect average price. 
@@ -77,8 +77,16 @@ That is, if there's more wholesale than retail then for the same volume you will
 | 2017-01-01 | 2.06         | 39260.55    | 6071.7    | 20105.65   | 1025.49    | 12057.71   | 11934.77   | 122.94     | 0          | organic | 2017 | New York |
 | 2019-01-20 | 1.4          | 39243.75    | 50.98     | 2616.8     | 0          | 36575.97   | 24531.82   | 12044.15   | 0          | organic | 2019 | Boston   |
 
+This change improves dramatically the test score for the Decision Tree, and only very little for the Linear regression.
 
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 64.70%       |
+| Linear regression | 53.57%           | 54.60%       |
++-------------------+------------------+--------------+
 
+Then we apply the polynomial features to capture the non-linear data behavior
 
 
 # 3. Only total volume and only conventional avocados
