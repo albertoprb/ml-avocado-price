@@ -59,23 +59,27 @@ Challenges
 
 ## TODOs
 
-* Clean-up the project and organize it
-* Redo the steps and document results
-* Cross-validation
-* Optimize Decision Tree + Random forest
-* Optimize Linear Regression
-* Break down into 2 avocado types
-* Move to expanded dataset
-* PCA on components of volume
 
---- 81
-DONE fit auf der Trainingsmenge 
-DONE score auf der Testmenge 
-DONE Datenbeschreibung kurzer Bericht
+* Algos: SVM, Random Forest, Decision Tree Regressor, Linear Regression
+* AutoML
+
+* Choose scoring metric
+
+* Time series split
+* Cross-validation
+
+
+--
+* Optimize Decision Tree 
+* Optimize Linear Regression
+* Optimize SVM
+
+
+* Add time series
+
 --- 10
 TODO Datenbeschreibung ausführlich trainscore cvscore verschiedene 
 ? Parameter im Algorithmus mit Score testscore   
-DONE ausführlicher Bericht( aber nicht labern!)
 --- 5,5
 Score-Festlegung
 Auswahl der Algorithmen und Parameter

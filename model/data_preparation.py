@@ -27,24 +27,32 @@ class DataPreparation:
     def __init__(self, df):
         self.df = df
 
-    def convert_date(self, to_year_week=False):
+    def expand_date(self, to_year_week=False):
+
+        self.df = self.df.drop(columns=["year"])
         self.df["date"] = pd.to_datetime(self.df["date"])
-        self.df["year"] = self.df["date"].dt.year
+
         if to_year_week:
-            self.df["date"] = pd.to_datetime(self.df["date"])
             self.df["year"] = self.df["date"].dt.isocalendar().year
             self.df["week"] = self.df["date"].dt.isocalendar().week
+
         else:
+            self.df["year"] = self.df["date"].dt.year
             self.df["month"] = self.df["date"].dt.month
             self.df["day"] = self.df["date"].dt.day
+
         self.df = self.df.drop(columns=["date"])
+
         return self
 
-    def remove_date(self):
-        self.df = self.df.drop(columns=["date", "year"])
+    def remove_date(self, keep_year=False):
+        if keep_year:
+            self.df = self.df.drop(columns=["date"])
+        else:
+            self.df = self.df.drop(columns=["date", "year"])
         return self
 
-    def keep_only(self, total_volume=False, volume_components=False):
+    def keep(self, total_volume, volume_components):
         if volume_components:
             self.df = self.df.drop(columns=[
                 "total_volume",
@@ -54,6 +62,13 @@ class DataPreparation:
             self.df = self.df.drop(columns=[
                 "4046", "4225", "4770",
                 "small_bags", "large_bags", "xlarge_bags",
+                "total_bags"
+            ])
+        if not total_volume and not volume_components:
+            self.df = self.df.drop(columns=[
+                "4046", "4225", "4770",
+                "small_bags", "large_bags", "xlarge_bags",
+                "total_volume",
                 "total_bags"
             ])
         return self
@@ -96,12 +111,11 @@ class DataPreparation:
 data_processor = DataPreparation(df)
 slices = (
     data_processor
-    .keep_only(total_volume=True)
-    .remove_date()
-    .slice(by_avocado_type=True)
-    # .convert_date(to_year_week=True)
-    # .add_location_details(expanded_locations)
-    # .slice(by_avocado_type=True)
+    .keep(volume_components=False, total_volume=False)
+    # .remove_date()
+    # .expand_date(to_year_week=True)
+    .add_location_details(expanded_locations)
+    .slice()
 )
 
 for slice_name, slice in slices.items():

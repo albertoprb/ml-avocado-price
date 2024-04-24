@@ -138,3 +138,47 @@ And drammatically worse for Organic
 Conclusions
 * Total volume alone is not a good estimator for average avocado price.
 
+# 4. Keeping the volume components, but now adding year and week
+
+First we added year to the best data processing, but treated it as a categorical variable.
+
+It improves a bit the decision tree.
+
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 69.44%       |
+| Linear regression | 57.24%           | 58.13%       |
++-------------------+------------------+--------------+
+
+Then added week and encoding it (treating it again as a categorical variable)
+
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 68.41%       |
+| Linear regression | 61.87%           | 62.18%       |
++-------------------+------------------+--------------+
+
+Then considered it as a numerical varialble and scaled it.
+
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 77.92%       |
+| Linear regression | 54.98%           | 55.61%       |
++-------------------+------------------+--------------+
+
+Then if we treat the dates as numerical for the Decision Tree, 
+and as categorical for the Linear Regression,
+
++-------------------+------------------+--------------+
+|                   | Training score   | Test score   |
+|-------------------+------------------+--------------|
+| Decision Tree     | 100.00%          | 78.13%       |
+| Linear regression | 61.87%           | 62.18%       |
++-------------------+------------------+--------------+
+
+Adding PCA see if reducing dimensionality of the many volume components
+increases the model's performance, especially for the regression.
+
