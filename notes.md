@@ -1,7 +1,6 @@
 ## TODOs
 
 Play with the scoring
-* Training score as a reference in the beginning . Test score later to optimize the algo
 * Time series split
 * Try split again of avocados type
 

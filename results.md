@@ -190,8 +190,32 @@ increases the model's performance, especially for the regression.
 
 ### 5. Moving to use the cross validation with RMSE
 
-So far our scores were calculated without cross-validation.
-The score for the Decision Tree was the default as RMSE.
-The score for the Linear Regression was the default as ?.
+So far our scores were calculated without cross-validation, and using the default R2 score.
 
-Now we can 
+We decided to use the RMSE score instead of the R2 because 
+
+* The R2 score uses the squared error predicted in relation to the mean. Given our data is periodic, the the mean for all years might not be a good optimization hook, unless we would calculate our own local R2 (e.g. using quarters). Unfortunately, we do not have time for that.
+* The RMSE score is relatively easy to understand for the stakeholders, and the score is in the same unit as the price.
+
+Based on that we re-run the model on the training data with cross validation using 6 folds. 
+We also show regression error metrics as a baseline on the train/test split.
+
+**Models CV scores (On train data, RMSE)**
+
+Avocado average_price on train data: $ 1.379 
+
+|                         | Fold 1   | Fold 2   | Fold 3   | Fold 4   | Fold 5   | Fold 6   |
+|-------------------------|----------|----------|----------|----------|----------|----------|
+| DecisionTreeRegressor() | $ 0.19   | $ 0.19   | $ 0.19   | $ 0.19   | $ 0.19   | $ 0.19   |
+| LinearRegression()      | $ 0.23   | $ 0.23   | $ 0.23   | $ 0.23   | $ 0.25   | $ 0.24   | 
+
+**Models errors (On test split 0.33)**
+
+Avocado average_price on test data: $ 1.382 
+
+|                         | MAE   | MAE %   |   MSE | RMSE   |   R2 |
+|-------------------------|-------|---------|-------|--------|------|
+| DecisionTreeRegressor() | $0.12 | 8.72%   |  0.03 | $0.18  | 0.78 |
+| LinearRegression()      | $0.18 | 13.38%  |  0.05 | $0.23  | 0.62 | 
+
+### 6. Re-consider avocado types
