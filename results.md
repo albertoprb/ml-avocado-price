@@ -24,35 +24,34 @@ We established the following runs
 |   |      |      |      |           |              |                                     |
 |   |      |      |      |           |              |                                     |
 
-# 1. Only considering total volume
+### 1. Only considering total volume
 
 In this scenario we only kept the following columns: average_price,total_volume,type,geography.
 
 With Ordinal Encoder
-+-------------------+------------------+--------------+
+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision tree     | 100.00%          | 41.37%       |
 | Linear Regression | 38.50%           | 39.14%       |
-+-------------------+------------------+--------------+
+
 
 With OneHot Encoder and No Scaler
-+-------------------+------------------+--------------+
+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision tree     | 100.00%          | 41.94%       |
 | Linear Regression | 53.63%           | 54.19%       |
-+-------------------+------------------+--------------+
+
 
 Using the OneHot Encoder and StandardScaler for total_volume
 The scaler is only used for the Linear Regression.
 
-+-------------------+------------------+--------------+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision tree     | 100.00%          | 41.94%       |
 | Linear Regression | 53.63%           | 54.19%       |
-+-------------------+------------------+--------------+
+
 
 Conclusions
 
@@ -63,7 +62,7 @@ Conclusions
 * It's very inneficient to experiment without using sklearn pipelines
 * It's much easier to iterate on a jupyter notebook but less reliable
 
-# 2. Removing total_volume and keeping all volume components
+### 2. Removing total_volume and keeping all volume components
 
 In this scenario we 
 * Moved to use sklearn pipelines. Replicated the results to make sure.
@@ -94,7 +93,7 @@ Conclusions
 * Polynomial features in this scenario did not help.
 
 
-# 3. Removing total_volume and keeping all volume components, only keeping conventional or organic avocados
+### 3. Removing total_volume and keeping all volume components, only keeping conventional or organic avocados
 
 For Conventional, the results were much worse
 
@@ -116,7 +115,7 @@ Conclusions
 
 * Slicing the data on avocado type did not yield better results.
 
-# 3. Keeping onlyy total_volume and keeping either conventional or organic avocados
+### 3. Keeping onlyy total_volume and keeping either conventional or organic avocados
 
 For Conventional, the results were much worse
 
@@ -137,7 +136,7 @@ And drammatically worse for Organic
 Conclusions
 * Total volume alone is not a good estimator for average avocado price.
 
-# 4. Keeping the volume components, but now adding year and week
+### 4. Keeping the volume components, but now adding year and week
 
 First we added year to the best data processing, but treated it as a categorical variable.
 
