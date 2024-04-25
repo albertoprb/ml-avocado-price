@@ -60,7 +60,7 @@ Conclusions
 * Decision tree is overfitting the training data
 * Linear model without polynomial features doesn't fit this data
 * Using different scalers didn't affect the score
-* It's very inefficient to experiment without using sklearn pipelines
+* It's very inneficient to experiment without using sklearn pipelines
 * It's much easier to iterate on a jupyter notebook but less reliable
 
 # 2. Removing total_volume and keeping all volume components
@@ -70,7 +70,7 @@ In this scenario we
 * Kept all components of volume. 
 
 The hypothesis is that for the same total volume, if certain components have higher representation, they will affect average price. 
-That is, if there's more wholesale than retail, then for the same volume you will have lower average price. See this example
+That is, if there's more wholesale than retail then for the same volume you will have lower average price. See this example
 
 | Date       | AveragePrice | TotalVolume | SmallHass | LargeHass  | XLargeHass | TotalBags  | SmallBags  | LargeBags  | XLargeBags | Type    | Year | Region   |
 |------------|--------------|-------------|-----------|------------|------------|------------|------------|------------|------------|---------|------|----------|
@@ -91,7 +91,7 @@ Then we apply the polynomial features to capture the non-linear data behavior. N
 Conclusions
 
 * Using a sklearn pipeline makes changes much easier 
-* The Test score improved dramatically using the components of volume but the linear regression could be better. 
+* The Test score improved drammatically using the components of volume but the linear regression could be better. 
 * Polynomial features in this scenario did not help.
 
 
@@ -117,7 +117,7 @@ Conclusions
 
 * Slicing the data on avocado type did not yield better results.
 
-# 3. Keeping only total_volume and keeping either conventional or organic avocados
+# 3. Keeping onlyy total_volume and keeping either conventional or organic avocados
 
 For Conventional, the results were much worse
 +-------------------+------------------+--------------+
@@ -127,7 +127,7 @@ For Conventional, the results were much worse
 | Linear regression | 37.08%           | 36.70%       |
 +-------------------+------------------+--------------+
 
-And dramatically worse for Organic
+And drammatically worse for Organic
 +-------------------+------------------+--------------+
 |                   | Training score   | Test score   |
 |-------------------+------------------+--------------|
@@ -160,7 +160,7 @@ Then added week and encoding it (treating it again as a categorical variable)
 | Linear regression | 61.87%           | 62.18%       |
 +-------------------+------------------+--------------+
 
-Then considered it as a numerical variable and scaled it.
+Then considered it as a numerical varialble and scaled it.
 
 +-------------------+------------------+--------------+
 |                   | Training score   | Test score   |
