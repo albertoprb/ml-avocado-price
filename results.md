@@ -55,9 +55,11 @@ The scaler is only used for the Linear Regression.
 
 Conclusions
 
-* Both perform poorly
+* Both Algorithms perform poorly
 * Decision tree is overfitting the training data
 * Linear model without polynomial features doesn't fit this data
+    + TODO Build tabele with different degrees (sinus curve with 7 potenz)
+    + TODO Splines Transformierung in report
 * Using different scalers didn't affect the score
 * It's very inneficient to experiment without using sklearn pipelines
 * It's much easier to iterate on a jupyter notebook but less reliable
@@ -93,7 +95,7 @@ Conclusions
 * Polynomial features in this scenario did not help.
 
 
-### 3. Removing total_volume and keeping all volume components, only keeping conventional or organic avocados
+### 3a. Removing total_volume and keeping all volume components, only keeping conventional or organic avocados
 
 For Conventional, the results were much worse
 
@@ -115,7 +117,9 @@ Conclusions
 
 * Slicing the data on avocado type did not yield better results.
 
-### 3. Keeping onlyy total_volume and keeping either conventional or organic avocados
+LASSO and Ridge regression only after overfitting in the Mean squared error regression (simple)
+
+### 3b. Keeping onlyy total_volume and keeping either conventional or organic avocados
 
 For Conventional, the results were much worse
 
@@ -137,6 +141,12 @@ Conclusions
 * Total volume alone is not a good estimator for average avocado price.
 
 ### 4. Keeping the volume components, but now adding year and week
+
+Baseline
+|                   | Training score   | Test score   |
+|-------------------|------------------|--------------|
+| Decision Tree     | 100.00%          | 64.70%       |
+| Linear regression | 53.57%           | 54.60%       |
 
 First we added year to the best data processing, but treated it as a categorical variable.
 
@@ -180,3 +190,10 @@ increases the model's performance, especially for the regression.
 
 
 
+### 5. Moving to use the cross validation with RMSE
+
+So far our scores were calculated without cross-validation.
+The score for the Decision Tree was the default as RMSE.
+The score for the Linear Regression was the default as ?.
+
+Now we can 
