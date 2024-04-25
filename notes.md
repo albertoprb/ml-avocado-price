@@ -60,14 +60,16 @@ Challenges
 ## TODOs
 
 
-* Algos: SVM, Random Forest, Decision Tree Regressor, Linear Regression
-* AutoML
-
-* Choose scoring metric
-
+* Algos: SVM, Random Forest
+* Optimize DecisionTree and LinearRegression
 * Time series split
+* Choose scoring metric (R2 model.score) split in all of them
 * Cross-validation
+* Try with the CSV of the missing data
+* Remove outliers
+* Try PCA with all data
 
+* AutoML
 
 --
 * Optimize Decision Tree 

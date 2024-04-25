@@ -79,12 +79,11 @@ That is, if there's more wholesale than retail then for the same volume you will
 
 This change improves dramatically the test score for the Decision Tree, and only very little for the Linear regression.
 
-+-------------------+------------------+--------------+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 64.70%       |
 | Linear regression | 53.57%           | 54.60%       |
-+-------------------+------------------+--------------+
+
 
 Then we apply the polynomial features to capture the non-linear data behavior. No significant difference for degrees 2, and 3.
 
@@ -98,20 +97,20 @@ Conclusions
 # 3. Removing total_volume and keeping all volume components, only keeping conventional or organic avocados
 
 For Conventional, the results were much worse
-+-------------------+------------------+--------------+
+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 48.74%       |
 | Linear regression | 38.39%           | 38.11%       |
-+-------------------+------------------+--------------+
+
 
 Similar for Organic
-+-------------------+------------------+--------------+
+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 37.82%       |
 | Linear regression | 30.38%           | 29.77%       |
-+-------------------+------------------+--------------+
+
 
 Conclusions
 
@@ -120,20 +119,20 @@ Conclusions
 # 3. Keeping onlyy total_volume and keeping either conventional or organic avocados
 
 For Conventional, the results were much worse
-+-------------------+------------------+--------------+
+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 14.43%       |
 | Linear regression | 37.08%           | 36.70%       |
-+-------------------+------------------+--------------+
+
 
 And drammatically worse for Organic
-+-------------------+------------------+--------------+
+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 1.00%        |
 | Linear regression | 29.44%           | 28.70%       |
-+-------------------+------------------+--------------+
+
 
 Conclusions
 * Total volume alone is not a good estimator for average avocado price.
@@ -144,41 +143,41 @@ First we added year to the best data processing, but treated it as a categorical
 
 It improves a bit the decision tree.
 
-+-------------------+------------------+--------------+
+TODO PCA applied - Replicated the results
+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 69.44%       |
 | Linear regression | 57.24%           | 58.13%       |
-+-------------------+------------------+--------------+
+
 
 Then added week and encoding it (treating it again as a categorical variable)
 
-+-------------------+------------------+--------------+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 68.41%       |
 | Linear regression | 61.87%           | 62.18%       |
-+-------------------+------------------+--------------+
+
 
 Then considered it as a numerical varialble and scaled it.
 
-+-------------------+------------------+--------------+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 77.92%       |
 | Linear regression | 54.98%           | 55.61%       |
-+-------------------+------------------+--------------+
+
 
 Then if we treat the dates as numerical for the Decision Tree, 
 and as categorical for the Linear Regression,
 
-+-------------------+------------------+--------------+
 |                   | Training score   | Test score   |
-|-------------------+------------------+--------------|
+|-------------------|------------------|--------------|
 | Decision Tree     | 100.00%          | 78.13%       |
 | Linear regression | 61.87%           | 62.18%       |
-+-------------------+------------------+--------------+
+
 
 Adding PCA see if reducing dimensionality of the many volume components
 increases the model's performance, especially for the regression.
+
+
 
