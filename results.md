@@ -219,3 +219,74 @@ Avocado average_price on test data: $ 1.382
 | LinearRegression()      | $0.18 | 13.38%  |  0.05 | $0.23  | 0.62 | 
 
 ### 6. Re-consider avocado types
+
+First, the dataset contains as many samples for conventional and organic avocados. However, the average price and total volumes are drastically different. For all years, see the table below:
+
+| geography     | price (conventional) | price (organic) | volume millions (conventional) | volume millions (organic) |
+|---------------|-----------------------|-----------------|-------------------------------|---------------------------|
+| California    | 1.15                  | 1.74            | 6.31                          | 0.20                      |
+| Great Lakes   | 1.15                  | 1.47            | 3.81                          | 0.17                      |
+| Midsouth      | 1.17                  | 1.57            | 3.43                          | 0.15                      |
+| Northeast     | 1.31                  | 1.77            | 4.83                          | 0.21                      |
+| Plains        | 1.13                  | 1.57            | 2.02                          | 0.06                      |
+| South Central | 0.86                  | 1.35            | 6.65                          | 0.13                      |
+| Southeast     | 1.12                  | 1.54            | 4.42                          | 0.09                      |
+| West          | 1.02                  | 1.62            | 6.76                          | 0.26                      |
+
+The total distribution look likes the following 
+
+|                            |    count |   mean |   std |   min |   50% |   75% |   95% |   99% |   max |
+|----------------------------|----------|--------|-------|-------|-------|-------|-------|-------|-------|
+| average_price_conventional | 16524.00 |   1.14 |  0.25 |  0.46 |  1.12 |  1.30 |  1.59 |  1.80 |  2.22 |
+| total_volume (millions)    | 16524.00 |   1.87 |  5.41 |  0.03 |  0.48 |  1.14 |  6.48 | 36.78 | 63.72 |
+| average_price_organic      | 16521.00 |   1.62 |  0.34 |  0.44 |  1.58 |  1.82 |  2.21 |  2.59 |  3.25 |
+| total_volume (millions)    | 16521.00 |   0.06 |  0.19 |  0.00 |  0.02 |  0.04 |  0.23 |  1.21 |  2.39 | 
+
+So we think that splitting them again should yield better results.
+
+**For organic the results are worse.**
+
+CV scores (Train data, RMSE)
+
+Avocado average_price on train data: $ 1.616 
+
+|                         | Fold 1   | Fold 2   | Fold 3   | Fold 4   | Fold 5   | Fold 6   |
+|-------------------------|----------|----------|----------|----------|----------|----------|
+| DecisionTreeRegressor() | $ 0.22   | $ 0.22   | $ 0.22   | $ 0.22   | $ 0.22   | $ 0.23   |
+| LinearRegression()      | $ 0.26   | $ 0.26   | $ 0.26   | $ 0.26   | $ 0.27   | $ 0.27   | 
+
+Errors (Test split 0.33)
+
+Avocado average_price on test data: $ 1.613 
+
+|                         | MAE   | MAE %   |   MSE | RMSE   |   R2 |
+|-------------------------|-------|---------|-------|--------|------|
+| DecisionTreeRegressor() | $0.14 | 8.73%   |  0.04 | $0.20  | 0.65 |
+| LinearRegression()      | $0.20 | 13.29%  |  0.07 | $0.26  | 0.40 | 
+
+
+**For conventional, the results are better.**
+
+CV scores (Train data, RMSE)
+
+Avocado average_price on train data: $ 1.146 
+
+|                         | Fold 1   | Fold 2   | Fold 3   | Fold 4   | Fold 5   | Fold 6   |
+|-------------------------|----------|----------|----------|----------|----------|----------|
+| DecisionTreeRegressor() | $ 0.14   | $ 0.15   | $ 0.15   | $ 0.14   | $ 0.15   | $ 0.15   |
+| LinearRegression()      | $ 0.16   | $ 0.17   | $ 0.16   | $ 0.16   | $ 0.16   | $ 0.16   | 
+
+Errors (Test split 0.33)
+
+Avocado average_price on test data: $ 1.142 
+
+|                         | MAE   | MAE %   |   MSE | RMSE   |   R2 |
+|-------------------------|-------|---------|-------|--------|------|
+| DecisionTreeRegressor() | $0.10 | 8.70%   |  0.02 | $0.14  | 0.67 |
+| LinearRegression()      | $0.13 | 11.25%  |  0.03 | $0.16  | 0.58 | 
+
+
+Lessons learned
+* Here the lesson learned is how important the error metric is. The R2 score once again shows a worse result in both splits because the mean is also different, however there was a clear improvement for the conventional avocado using the RMSE as a reference.
+* In this scenario the linear regression got much better results. It's expected as the decision tree might be able to early in the tree to split the data.
+* Later maybe the 2 models can be deployed separately.

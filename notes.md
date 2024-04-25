@@ -1,8 +1,7 @@
 ## TODOs
 
 Play with the scoring
-* Time series split
-* Try split again of avocados type
+
 
 Optimize params
 * Algos: SVM, Random Forest; KNN Regressor
@@ -16,6 +15,7 @@ Play with data input
 Play
 * AutoML
 * Regional data bulletproof
+* Time series split
 
 --- 10
 TODO Datenbeschreibung ausführlich trainscore cvscore verschiedene 
