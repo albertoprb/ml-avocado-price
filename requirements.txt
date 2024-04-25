@@ -12,6 +12,6 @@ plotly==5.20.0
 summarytools==0.2.3
 statsmodels==0.14.1
 ipywidgets
-
+threadpoolctl==3.4.0
 # Machine learning
 scikit-learn==1.4

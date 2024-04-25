@@ -289,4 +289,44 @@ Avocado average_price on test data: $ 1.142
 Lessons learned
 * Here the lesson learned is how important the error metric is. The R2 score once again shows a worse result in both splits because the mean is also different, however there was a clear improvement for the conventional avocado using the RMSE as a reference.
 * In this scenario the linear regression got much better results. It's expected as the decision tree might be able to early in the tree to split the data.
-* Later maybe the 2 models can be deployed separately.
+* Later maybe the 2 models can be deployed separately. For now, we'll focus to have better predictions where there's more market volume, that is, the conventional avocados.
+
+#### 7. Include more models
+
+Now that we have a baseline with simple models, and a proven data processing pipeline, we experimented with more regression models.
+We believe the RandomForestRegresson will improve the DecisionTreeRegressor score, and the SVM is also promissing.
+
+CV scores (Train data, RMSE)
+
+Avocado average_price on train data: $ 1.146 
+
+|                                                        | Fold 1   | Fold 2   | Fold 3   | Fold 4   | Fold 5   | Fold 6   |
+|--------------------------------------------------------|----------|----------|----------|----------|----------|----------|
+| DecisionTreeRegressor()                                | $ 0.14   | $ 0.15   | $ 0.15   | $ 0.15   | $ 0.15   | $ 0.15   |
+| LinearRegression()                                     | $ 0.16   | $ 0.17   | $ 0.16   | $ 0.16   | $ 0.16   | $ 0.16   |
+| LassoCV(alphas=[0.0001, 0.001, 0.01, 0.1, 1, 3, 10])   | $ 0.16   | $ 0.17   | $ 0.16   | $ 0.16   | $ 0.16   | $ 0.16   |
+| RidgeCV(alphas=[0.0001, 0.001, 0.01, 0.1, 1, 3, 10])   | $ 0.16   | $ 0.17   | $ 0.16   | $ 0.16   | $ 0.16   | $ 0.16   |
+| KNeighborsRegressor(n_neighbors=4, weights='distance') | $ 0.13   | $ 0.13   | $ 0.13   | $ 0.13   | $ 0.12   | $ 0.13   |
+| SVR(epsilon=0.01)                                      | $ 0.10   | $ 0.10   | $ 0.10   | $ 0.09   | $ 0.09   | $ 0.10   |
+| RandomForestRegressor()                                | $ 0.10   | $ 0.10   | $ 0.10   | $ 0.10   | $ 0.09   | $ 0.10   | 
+
+Errors (Test split 0.33)
+
+Avocado average_price on test data: $ 1.142 
+
+|                                                        | MAE   | MAE %   |   MSE | RMSE   |   R2 |
+|--------------------------------------------------------|-------|---------|-------|--------|------|
+| DecisionTreeRegressor()                                | $0.10 | 8.66%   |  0.02 | $0.14  | 0.67 |
+| LinearRegression()                                     | $0.13 | 11.25%  |  0.03 | $0.16  | 0.58 |
+| LassoCV(alphas=[0.0001, 0.001, 0.01, 0.1, 1, 3, 10])   | $0.13 | 11.27%  |  0.03 | $0.16  | 0.57 |
+| RidgeCV(alphas=[0.0001, 0.001, 0.01, 0.1, 1, 3, 10])   | $0.13 | 11.26%  |  0.03 | $0.16  | 0.58 |
+| KNeighborsRegressor(n_neighbors=4, weights='distance') | $0.09 | 8.09%   |  0.02 | $0.12  | 0.76 |
+| SVR(epsilon=0.01)                                      | $0.07 | 6.15%   |  0.01 | $0.10  | 0.86 |
+| RandomForestRegressor()                                | $0.07 | 6.24%   |  0.01 | $0.09  | 0.86 | 
+
+
+
+### Future work
+
+
+* Imput tree missing weeks of Dec 2018
