@@ -188,8 +188,6 @@ and as categorical for the Linear Regression,
 Adding PCA see if reducing dimensionality of the many volume components
 increases the model's performance, especially for the regression.
 
-
-
 ### 5. Moving to use the cross validation with RMSE
 
 So far our scores were calculated without cross-validation.
