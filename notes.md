@@ -59,23 +59,25 @@ Challenges
 
 ## TODOs
 
+Play with the scoring
+* Training score as a reference in the beginning . Test score later to optimize the algo
+* Cross-validation
+* Choose scoring metric (R2 model.score) split in all of them
+* Time series split
 
-* Algos: SVM, Random Forest, Decision Tree Regressor, Linear Regression
+Optimize params
+* Algos: SVM, Random Forest; KNN Regressor
+* Optimize DecisionTree and LinearRegression or others / Gridsearch
+
+Play with data input
+* Try with the CSV of the missing data 3 weeks of Dec 2018
+* Remove outliers?
+* Try PCA with all data (without splitting data first)
+
+Play
 * AutoML
 
-* Choose scoring metric
-
-* Time series split
-* Cross-validation
-
-
---
-* Optimize Decision Tree 
-* Optimize Linear Regression
-* Optimize SVM
-
-
-* Add time series
+--- 81
 
 --- 10
 TODO Datenbeschreibung ausführlich trainscore cvscore verschiedene 

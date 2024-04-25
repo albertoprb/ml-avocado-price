@@ -111,9 +111,9 @@ class DataPreparation:
 data_processor = DataPreparation(df)
 slices = (
     data_processor
-    .keep(volume_components=False, total_volume=False)
+    .keep(volume_components=True, total_volume=False)
     # .remove_date()
-    # .expand_date(to_year_week=True)
+    .expand_date(to_year_week=True)
     .add_location_details(expanded_locations)
     .slice()
 )
