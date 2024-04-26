@@ -320,7 +320,35 @@ Avocado average_price on test data: $ 1.142
 | SVR(epsilon=0.01)                                      | $0.07 | 6.15%   |  0.01 | $0.10  | 0.86 |
 | RandomForestRegressor()                                | $0.07 | 6.24%   |  0.01 | $0.09  | 0.86 | 
 
+Lessons learned
 
+* The most hardware intensive models take very long to run (This run took around 15m) but the results are great.
+* Running the same models in a google TPU4 takes around 
+* Open question: Does the RandomForestRegressor need a cross-validation?
+
+#### 8. Fine tuning best model params
+
+GridsearchCV results
+
+#### SVM best params
+{'C': 5, 'degree': 3, 'epsilon': 0.01, 'kernel': 'rbf'}
+
+#### Random Forest best params
+{'bootstrap': False, 'max_depth': None, 'max_features': 1, 'n_estimators': 100}
+
+#### Final model 
+
+
+
+#### AutoML Experiment
+
+Using Auto Gluon with a TPU4 GPU
+https://colab.research.google.com/drive/1WNQjVZflQWbGPpXjerY0AXfZtfv0odoH?hl=en#scrollTo=O90xYI_HdlNL
+
+
+Fitting model: WeightedEnsemble_L2
+Ensemble Weights: {'LightGBMXT': 0.458, 'LightGBM': 0.292, 'LightGBMLarge': 0.208, 'CatBoost': 0.042}
+-0.0782	 = Validation score   (-root_mean_squared_error)
 
 ### Future work
 
