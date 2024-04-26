@@ -291,7 +291,7 @@ Lessons learned
 * In this scenario the linear regression got much better results. It's expected as the decision tree might be able to early in the tree to split the data.
 * Later maybe the 2 models can be deployed separately. For now, we'll focus to have better predictions where there's more market volume, that is, the conventional avocados.
 
-#### 7. Include more models
+### 7. Include more models
 
 Now that we have a baseline with simple models, and a proven data processing pipeline, we experimented with more regression models.
 We believe the RandomForestRegresson will improve the DecisionTreeRegressor score, and the SVM is also promissing.
@@ -326,21 +326,21 @@ Lessons learned
 * Running the same models in a google TPU4 takes around 
 * Open question: Does the RandomForestRegressor need a cross-validation?
 
-#### 8. Fine tuning best model params
+### 8. Fine tuning best model params
 
 GridsearchCV results
 
-#### SVM best params
+**SVM best params**
 {'C': 5, 'degree': 3, 'epsilon': 0.01, 'kernel': 'rbf'}
 
-#### Random Forest best params
+**Random Forest best params**
 {'bootstrap': False, 'max_depth': None, 'max_features': 1, 'n_estimators': 100}
 
 #### Final model 
 
 
 
-#### AutoML Experiment
+### AutoML Experiment
 
 Using Auto Gluon with a TPU4 GPU
 https://colab.research.google.com/drive/1WNQjVZflQWbGPpXjerY0AXfZtfv0odoH?hl=en#scrollTo=O90xYI_HdlNL
@@ -351,6 +351,5 @@ Ensemble Weights: {'LightGBMXT': 0.458, 'LightGBM': 0.292, 'LightGBMLarge': 0.20
 -0.0782	 = Validation score   (-root_mean_squared_error)
 
 ### Future work
-
 
 * Imput tree missing weeks of Dec 2018
