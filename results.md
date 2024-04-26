@@ -355,32 +355,30 @@ This is the final table with all algorithms run but the SVM and RandomForest tun
 
 Avocado average_price on train data: $ 1.146 
 
-|                                                        | Fold 1   | Fold 2   | Fold 3   | Fold 4   | Fold 5   | Fold 6   |
-|--------------------------------------------------------|----------|----------|----------|----------|----------|----------|
-| DecisionTreeRegressor()                                | $ 0.14   | $ 0.15   | $ 0.15   | $ 0.14   | $ 0.15   | $ 0.15   |
-| LinearRegression()                                     | $ 0.16   | $ 0.17   | $ 0.16   | $ 0.16   | $ 0.16   | $ 0.16   |
-| KNeighborsRegressor(n_neighbors=4, weights='distance') | $ 0.13   | $ 0.13   | $ 0.13   | $ 0.13   | $ 0.12   | $ 0.13   |
-| SVR(C=5.0, epsilon=0.01)                               | $ 0.09   | $ 0.10   | $ 0.09   | $ 0.09   | $ 0.10   | $ 0.10   |
-| RandomForestRegressor(bootstrap=False)                 | $ 0.14   | $ 0.15   | $ 0.15   | $ 0.14   | $ 0.14   | $ 0.14   | 
+|                                                         | Fold 1   | Fold 2   | Fold 3   | Fold 4   | Fold 5   | Fold 6   |
+|---------------------------------------------------------|----------|----------|----------|----------|----------|----------|
+| DecisionTreeRegressor()                                 | $ 0.14   | $ 0.15   | $ 0.15   | $ 0.14   | $ 0.15   | $ 0.15   |
+| LinearRegression()                                      | $ 0.16   | $ 0.17   | $ 0.16   | $ 0.16   | $ 0.16   | $ 0.16   |
+| KNeighborsRegressor(n_neighbors=4, weights='distance')  | $ 0.13   | $ 0.13   | $ 0.13   | $ 0.13   | $ 0.12   | $ 0.13   |
+| SVR(C=5.0, epsilon=0.01)                                | $ 0.09   | $ 0.10   | $ 0.09   | $ 0.09   | $ 0.10   | $ 0.10   |
+| RandomForestRegressor(bootstrap=False, max_features=15) | $ 0.10   | $ 0.10   | $ 0.09   | $ 0.09   | $ 0.09   | $ 0.09   | 
 
-Errors (Test split 0.33)
+**Errors (Test split 0.33)**
 
-**Avocado average_price on test data: $ 1.142**
+Avocado average_price on test data: $ 1.142 
 
-|                                                        | MAE   | MAE %   |   MSE | RMSE   |   R2 |
-|--------------------------------------------------------|-------|---------|-------|--------|------|
-| DecisionTreeRegressor()                                | $0.10 | 8.78%   |  0.02 | $0.14  | 0.67 |
-| LinearRegression()                                     | $0.13 | 11.25%  |  0.03 | $0.16  | 0.58 |
-| KNeighborsRegressor(n_neighbors=4, weights='distance') | $0.09 | 8.09%   |  0.02 | $0.12  | 0.76 |
-| SVR(C=5.0, epsilon=0.01)                               | $0.07 | 6.11%   |  0.01 | $0.09  | 0.86 |
-| RandomForestRegressor(bootstrap=False)                 | $0.09 | 8.33%   |  0.02 | $0.14  | 0.70 | 
+|                                                         | MAE   | MAE %   |   MSE | RMSE   |   R2 |
+|---------------------------------------------------------|-------|---------|-------|--------|------|
+| DecisionTreeRegressor()                                 | $0.10 | 8.78%   |  0.02 | $0.14  | 0.67 |
+| LinearRegression()                                      | $0.13 | 11.25%  |  0.03 | $0.16  | 0.58 |
+| KNeighborsRegressor(n_neighbors=4, weights='distance')  | $0.09 | 8.09%   |  0.02 | $0.12  | 0.76 |
+| SVR(C=5.0, epsilon=0.01)                                | $0.07 | 6.11%   |  0.01 | $0.09  | 0.86 |
+| RandomForestRegressor(bootstrap=False, max_features=15) | $0.06 | 5.92%   |  0.01 | $0.09  | 0.87 | 
 
-Here it seems the RandomForest became slightly worse so we would need to review the grid search params but we don't have time for that.
-The winner is the SVR with RMSE of $0.09. Given the average price of $1.142, this is an acceptable result to use in the business.
+The winner is the SVR or RandomForest with RMSE of $0.09. Given the average price of $1.142, this is an acceptable result to use in the business.
 
 If we had more time
 
-* We would re-run the grid search for RandomForest
 * We would run the same models with organic and see performance.
 * We would experiment with Ensemble methods.
 * We would bullet proof regional data. Maybe the predictions are good for a given region but not usable in another, so this would need to be clear before business decisions are taken with it.
