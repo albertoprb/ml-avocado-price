@@ -1,16 +1,9 @@
 # Avocado Price Predictor
 
-## Problem summary
+Problem summary
 https://www.kaggle.com/datasets/timmate/avocado-prices-2020/data
 
-## Project goals
-
-
-
-## 2. Data Understanding
-
-##### Data Source
-https://www.kaggle.com/datasets/timmate/avocado-prices-2020/data
+Final model in models
 
 ##### Data dictionary 
 
