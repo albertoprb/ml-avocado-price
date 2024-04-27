@@ -1,4 +1,4 @@
-# Avocado Price Predictor
+# 🥑 Avocado 💲Price Predictor
 
 Problem summary: https://www.kaggle.com/datasets/timmate/avocado-prices-2020/data
 
