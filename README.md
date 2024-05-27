@@ -1,16 +1,13 @@
-# Avocado Price Predictor
+# 🥑 Avocado 💲Price Predictor
 
-## Problem summary
-https://www.kaggle.com/datasets/timmate/avocado-prices-2020/data
+Problem summary: https://www.kaggle.com/datasets/timmate/avocado-prices-2020/data
 
-## Project goals
+This project contain the full data analysis of the problem, and a machine learning model to predict the 🥑 avocado price.
 
-
-
-## 2. Data Understanding
-
-##### Data Source
-https://www.kaggle.com/datasets/timmate/avocado-prices-2020/data
+| Description | Link |
+| --- | --- |
+| Final model in model/model_v6.ipynb | [model/model_v6.ipynb](https://github.com/albertoprb/ml-avocado-price/blob/main/model/model_v6.ipynb) |
+| Results | [results.md](https://github.com/albertoprb/ml-avocado-price/blob/main/results.md) |
 
 ##### Data dictionary 
 
@@ -27,4 +24,4 @@ Columns descriptions
     * Large Hass Avocado (~8-10oz avocado) | #4225 Avocado
     * Extra Large Hass Avocado (~10-15oz avocado) | #4770 Avocado
 
-Expand with data on https://hassavocadoboard.com/wp-content/uploads/2019/04/Hass-Avocado-Board-Price-Elasticities-of-Demand-or-Fresh-Hass-Avocados-2019.pdf
+Details on https://hassavocadoboard.com/wp-content/uploads/2019/04/Hass-Avocado-Board-Price-Elasticities-of-Demand-or-Fresh-Hass-Avocados-2019.pdf
